@@ -15,3 +15,7 @@ matrix:
       env: DATABASE_ADAPTER=mongoid
       services:
         - mongodb
+
+script:
+  - bundle exec rake
+  - BUNDLE_GEMFILE=Gemfile && cd sample_apps/sample_app_$DATABASE_ADAPTER && bundle && RACK_ENV=test bundle exec rake
