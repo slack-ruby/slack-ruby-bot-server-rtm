@@ -6,9 +6,9 @@ Slack Ruby Bot Server RealTime (RTM) Extension
 
 An extension to [slack-ruby-bot-server](https://github.com/slack-ruby/slack-ruby-bot-server) that makes it easy to implement Slack RTM bots.
 
-### Sample
+### Samples
 
-See [slack-ruby/slack-ruby-bot-server-rtm-sample](https://github.com/slack-ruby/slack-ruby-bot-server-rtm-sample) for a working sample.
+You can use one of the [sample applications](sample_apps) that use MongoDB or ActiveRecord to bootstrap your project and start adding slack command handlers on top of this code.
 
 ### Usage
 
