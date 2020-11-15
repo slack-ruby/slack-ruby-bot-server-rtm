@@ -24,4 +24,10 @@ describe SlackRubyBotServer::RealTime::Server do
       expect(subject.send(:client).names).to include 'foo'
     end
   end
+  context 'start_server!' do
+    pending 'starts server'
+    pending 'handles account_inactive'
+    pending 'handles invalid_auth'
+    pending 'handles generic error'
+  end
 end
