@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 gem 'mongoid'
 gem 'newrelic-slack-ruby-bot'
-gem 'slack-ruby-bot-server', github: 'dblock/slack-ruby-bot-server', branch: 'extract-rtm'
 gem 'slack-ruby-bot-server-rtm', path: '../../'
 
 gem 'kaminari-mongoid'

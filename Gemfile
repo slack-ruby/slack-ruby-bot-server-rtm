@@ -19,8 +19,6 @@ else
   warn "Invalid ENV['DATABASE_ADAPTER']: #{ENV['DATABASE_ADAPTER']}."
 end
 
-gem 'slack-ruby-bot-server', github: 'dblock/slack-ruby-bot-server', branch: 'extract-rtm'
-
 gemspec
 
 group :development, :test do

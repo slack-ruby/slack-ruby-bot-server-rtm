@@ -33,6 +33,26 @@ setting               | description
 ----------------------|------------------------------------------------------------------
                       |
 
+#### Server Class
+
+You can override the server class to handle additional events, and configure the service to use it.
+
+```ruby
+class MyServer < SlackRubyBotServer::Server
+  on :hello do |client, data|
+    # connected to Slack
+  end
+
+  on :channel_joined do |client, data|
+    # the bot joined a channel in data.channel['id']
+  end
+end
+
+SlackRubyBotServer::RealTime.configure do |config|
+  config.server_class = MyServer
+end
+```
+
 ### Copyright & License
 
 Copyright [Daniel Doubrovkine](http://code.dblock.org) and Contributors, 2020

@@ -15,6 +15,11 @@ describe SlackRubyBotServer::Config do
       expect(server).to receive(:start_async)
       SlackRubyBotServer::Service.instance.start!(team)
     end
+    context 'config' do
+      it 'sets bot OAuth scope' do
+        expect(SlackRubyBotServer.config.oauth_scope).to eq ['bot']
+      end
+    end
     context 'started team' do
       before do
         allow(server).to receive(:start_async)

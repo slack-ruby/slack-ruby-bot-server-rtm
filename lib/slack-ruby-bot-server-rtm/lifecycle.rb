@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+SlackRubyBotServer.configure do |config|
+  config.oauth_scope ||= ['bot']
+end
+
 SlackRubyBotServer::Config.service_class.instance.on :starting do |team, _error, options|
   SlackRubyBotServer::Config.service_class.instance.logger.info "Starting real-time team #{team}."
   options = { team: team }
