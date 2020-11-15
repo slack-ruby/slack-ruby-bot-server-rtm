@@ -24,6 +24,7 @@ gem 'slack-ruby-bot-server-rtm'
 
 ```ruby
 SlackRubyBotServer::RealTime.configure do |config|
+  config.server_class = ...
 end
 ```
 
@@ -31,9 +32,9 @@ The following settings are supported.
 
 setting               | description
 ----------------------|------------------------------------------------------------------
-                      |
+server_class          | Handler class for additional events.
 
-#### Server Class
+##### Server Class
 
 You can override the server class to handle additional events, and configure the service to use it.
 
