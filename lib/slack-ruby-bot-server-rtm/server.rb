@@ -21,7 +21,7 @@ module SlackRubyBotServer
         team.server = server
         server.start_async
       rescue StandardError => e
-        SlackRubyBotServer::Config.service_class.instance.run_callbacks :error, team, e
+        SlackRubyBotServer::Config.service_class.instance.send(:run_callbacks, :error, team, e)
         case e.message
         when 'account_inactive', 'invalid_auth' then
           SlackRubyBotServer::Config.logger.error "#{team.name}: #{e.message}, team will be deactivated."
