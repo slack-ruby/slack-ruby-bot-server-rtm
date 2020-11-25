@@ -5,6 +5,8 @@ SlackRubyBotServer.configure do |config|
 end
 
 SlackRubyBotServer::Config.service_class.instance.on :starting do |team, _error, options|
+  next if team.respond_to?(:oauth_version) && team.oauth_version != 'v1'
+
   SlackRubyBotServer::Config.service_class.instance.logger.info "Starting real-time team #{team}."
   options = { team: team }
   server = SlackRubyBotServer::RealTime::Config.server_class.new(options)
