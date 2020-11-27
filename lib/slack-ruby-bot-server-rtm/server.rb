@@ -23,9 +23,13 @@ module SlackRubyBotServer
       rescue StandardError => e
         SlackRubyBotServer::Config.service_class.instance.send(:run_callbacks, :error, team, e)
         case e.message
-        when 'account_inactive', 'invalid_auth' then
-          SlackRubyBotServer::Config.service_class.instance.logger.error "#{team.name}: #{e.message}, team will be deactivated."
-          SlackRubyBotServer::Config.service_class.instance.deactivate! team
+        when 'account_inactive', 'invalid_auth'
+          if team.respond_to?(:oauth_version) && team.oauth_version != 'v1'
+            SlackRubyBotServer::Config.service_class.instance.logger.info "#{team.name}: #{e.message}, team OAuth scope has been upgraded."
+          else
+            SlackRubyBotServer::Config.service_class.instance.logger.error "#{team.name}: #{e.message}, team will be deactivated."
+            SlackRubyBotServer::Config.service_class.instance.deactivate! team
+          end
         else
           wait = e.retry_after if e.is_a?(Slack::Web::Api::Errors::TooManyRequestsError)
           SlackRubyBotServer::Config.service_class.instance.logger.error "#{team.name}: #{e.message}, restarting in #{wait} second(s)."

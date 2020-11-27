@@ -38,5 +38,3 @@ end
 group :test do
   gem 'slack-ruby-danger', '~> 0.2.0', require: false
 end
-
-gem 'slack-ruby-bot-server', github: 'dblock/slack-ruby-bot-server', branch: 'oauth-version'

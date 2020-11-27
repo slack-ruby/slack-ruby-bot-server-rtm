@@ -28,6 +28,6 @@ SlackRubyBotServer::Config.service_class.instance.on :stopped do |team, _error, 
 end
 
 SlackRubyBotServer::Config.service_class.instance.on :deactivated do |team, _error, _options|
-  SlackRubyBotServer::Config.service_class.instance.logger.info "De-activating real-time team #{team}."
+  SlackRubyBotServer::Config.service_class.instance.logger.info "De-activated real-time team #{team}."
   team.server = nil
 end
