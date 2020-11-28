@@ -1,9 +1,8 @@
 ### Changelog
 
-#### 0.2.0 (Next)
+#### 0.2.0 (2020/11/27)
 
 * [#1](https://github.com/slack-ruby/slack-ruby-bot-server-rtm/pull/1): Only start OAuth v1 teams with a bot token - [@dblock](https://github.com/dblock).
-* Your contribution here.
 
 #### 0.1.1 (2020/11/15)
 
