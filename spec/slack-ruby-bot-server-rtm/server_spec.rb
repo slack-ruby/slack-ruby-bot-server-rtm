@@ -29,5 +29,6 @@ describe SlackRubyBotServer::RealTime::Server do
     pending 'handles account_inactive'
     pending 'handles invalid_auth'
     pending 'handles generic error'
+    pending 'does not deactivate a team that has upgraded oauth from v1 to v2'
   end
 end

@@ -5,6 +5,8 @@ SlackRubyBotServer.configure do |config|
 end
 
 SlackRubyBotServer::Config.service_class.instance.on :starting do |team, _error, options|
+  next if team.respond_to?(:oauth_version) && team.oauth_version != 'v1'
+
   SlackRubyBotServer::Config.service_class.instance.logger.info "Starting real-time team #{team}."
   options = { team: team }
   server = SlackRubyBotServer::RealTime::Config.server_class.new(options)
@@ -26,6 +28,6 @@ SlackRubyBotServer::Config.service_class.instance.on :stopped do |team, _error, 
 end
 
 SlackRubyBotServer::Config.service_class.instance.on :deactivated do |team, _error, _options|
-  SlackRubyBotServer::Config.service_class.instance.logger.info "De-activating real-time team #{team}."
+  SlackRubyBotServer::Config.service_class.instance.logger.info "De-activated real-time team #{team}."
   team.server = nil
 end

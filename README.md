@@ -4,7 +4,19 @@ Slack Ruby Bot Server RealTime (RTM) Extension
 [![Gem Version](https://badge.fury.io/rb/slack-ruby-bot-server-rtm.svg)](https://badge.fury.io/rb/slack-ruby-bot-server-rtm)
 [![Build Status](https://travis-ci.org/slack-ruby/slack-ruby-bot-server-rtm.svg?branch=main)](https://travis-ci.org/slack-ruby/slack-ruby-bot-server-rtm)
 
-An extension to [slack-ruby-bot-server](https://github.com/slack-ruby/slack-ruby-bot-server) that makes it easy to implement Slack RTM bots.
+# Table of Contents
+
+- [Introduction](#introduction)
+- [Samples](#samples)
+- [Usage](#usage)
+  - [Gemfile](#gemfile)
+  - [Configure](#configure)
+    - [Server Class](#server-class)
+- [Copyright & License](#copyright--license)
+
+### Introduction
+
+This library is an extension to [slack-ruby-bot-server](https://github.com/slack-ruby/slack-ruby-bot-server) that makes it easy to implement Slack RTM bots.
 
 ### Samples
 

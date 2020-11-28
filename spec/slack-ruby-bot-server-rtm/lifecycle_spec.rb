@@ -3,8 +3,8 @@
 require 'spec_helper'
 
 describe SlackRubyBotServer::Config do
-  let(:team) { Fabricate(:team) }
   context 'with defaults' do
+    let(:team) { Fabricate(:team) }
     let(:server) { SlackRubyBotServer::RealTime::Server.new(team: team) }
     let(:services) { SlackRubyBotServer::Service.instance.instance_variable_get(:@services) }
     before do
@@ -39,6 +39,7 @@ describe SlackRubyBotServer::Config do
     end
   end
   context 'overriding server_class' do
+    let(:team) { Fabricate(:team) }
     let(:server_class) do
       Class.new(SlackRubyBotServer::RealTime::Server) do
         attr_reader :called
@@ -63,6 +64,18 @@ describe SlackRubyBotServer::Config do
       allow_any_instance_of(server_class).to receive(:stop!)
       SlackRubyBotServer::Service.instance.start!(team)
       SlackRubyBotServer::Service.instance.stop!(team)
+    end
+  end
+  context 'v2 oauth scope' do
+    let(:team) { Fabricate(:team, oauth_version: 'v2') }
+    let(:server) { SlackRubyBotServer::RealTime::Server.new(team: team) }
+    let(:services) { SlackRubyBotServer::Service.instance.instance_variable_get(:@services) }
+    before do
+      allow(SlackRubyBotServer::RealTime::Server).to receive(:new).with(team: team).and_return(server)
+    end
+    it 'does not support real-time and is ignored' do
+      expect(server).to_not receive(:start_async)
+      SlackRubyBotServer::Service.instance.start!(team)
     end
   end
 end
