@@ -13,7 +13,7 @@ ActiveRecord::Base.establish_connection(
     ERB.new(
       File.read('config/postgresql.yml')
     ).result, [], [], true
-  )[ENV['RACK_ENV']]
+  )[ENV.fetch('RACK_ENV', nil)]
 )
 
 NewRelic::Agent.manual_start

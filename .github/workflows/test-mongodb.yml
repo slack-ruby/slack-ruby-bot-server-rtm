@@ -1,0 +1,26 @@
+---
+name: test
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: test
+    env:
+      DATABASE_ADAPTER: mongoid
+      BUNDLE_GEMFILE: Gemfile
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - uses: supercharge/mongodb-github-action@1.7.0
+        with:
+          mongodb-version: '8.0'
+      - run: bundle exec rake spec
+      - working-directory: sample_apps/sample_app_mongoid
+        env:
+          RACK_ENV: test
+        run: |
+          bundle install
+          bundle exec rake

@@ -8,7 +8,7 @@ require 'mongoid'
 require 'database_cleaner'
 require 'slack-ruby-bot-server-rtm/rspec'
 
-Mongoid.load!(File.expand_path('../config/mongoid.yml', __dir__), ENV['RACK_ENV'])
+Mongoid.load!(File.expand_path('../config/mongoid.yml', __dir__), ENV.fetch('RACK_ENV', nil))
 
 RSpec.configure do |config|
   config.before :suite do
@@ -21,7 +21,7 @@ RSpec.configure do |config|
     Mongoid.purge!
   end
 
-  config.around :each do |example|
+  config.around do |example|
     DatabaseCleaner.cleaning do
       example.run
     end
