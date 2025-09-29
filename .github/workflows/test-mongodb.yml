@@ -1,5 +1,5 @@
 ---
-name: test
+name: test-mongodb
 on: [push, pull_request]
 jobs:
   test:
@@ -7,7 +7,6 @@ jobs:
     name: test
     env:
       DATABASE_ADAPTER: mongoid
-      BUNDLE_GEMFILE: Gemfile
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1

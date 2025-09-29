@@ -6,9 +6,12 @@ ENV['RACK_ENV'] = 'test'
 
 require 'active_record'
 require 'database_cleaner'
+require 'pagy_cursor'
 require 'slack-ruby-bot-server-rtm/rspec'
 
-db_config = YAML.safe_load(File.read(File.expand_path('../config/postgresql.yml', __dir__)), [], [], true)[ENV.fetch('RACK_ENV', nil)]
+yml = ERB.new(File.read(File.expand_path('../config/postgresql.yml', __dir__))).result
+db_config = YAML.safe_load(yml, aliases: true)[ENV.fetch('RACK_ENV', nil)]
+
 ActiveRecord::Tasks::DatabaseTasks.create(db_config)
 ActiveRecord::Base.establish_connection(db_config)
 

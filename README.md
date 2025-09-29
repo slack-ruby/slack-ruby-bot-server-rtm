@@ -2,7 +2,8 @@ Slack Ruby Bot Server RealTime (RTM) Extension
 ==============================================
 
 [![Gem Version](https://badge.fury.io/rb/slack-ruby-bot-server-rtm.svg)](https://badge.fury.io/rb/slack-ruby-bot-server-rtm)
-[![Build Status](https://travis-ci.org/slack-ruby/slack-ruby-bot-server-rtm.svg?branch=main)](https://travis-ci.org/slack-ruby/slack-ruby-bot-server-rtm)
+[![test-postgresql](https://github.com/slack-ruby/slack-ruby-bot-server-rtm/actions/workflows/test-postgresql.yml/badge.svg)](https://github.com/slack-ruby/slack-ruby-bot-server-rtm/actions/workflows/test-postgresql.yml)
+[![test-mongodb](https://github.com/slack-ruby/slack-ruby-bot-server-rtm/actions/workflows/test-mongodb.yml/badge.svg)](https://github.com/slack-ruby/slack-ruby-bot-server-rtm/actions/workflows/test-mongodb.yml)
 
 # Table of Contents
 
