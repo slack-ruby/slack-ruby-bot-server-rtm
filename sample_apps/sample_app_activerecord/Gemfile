@@ -2,9 +2,11 @@
 
 source 'https://rubygems.org'
 
-gem 'activerecord', '~> 5.0.0', require: 'active_record'
+gem 'activerecord'
+gem 'mutex_m'
 gem 'newrelic-slack-ruby-bot'
-gem 'otr-activerecord', '~> 1.2.1'
+gem 'otr-activerecord'
+gem 'pagy_cursor'
 gem 'pg'
 gem 'rack-server-pages'
 gem 'rack-test'
@@ -12,7 +14,7 @@ gem 'slack-ruby-bot-server-rtm', path: '../../'
 gem 'unicorn'
 
 group :development, :test do
-  gem 'standalone_migrations', '~> 5.2'
+  gem 'standalone_migrations'
 end
 
 group :test do

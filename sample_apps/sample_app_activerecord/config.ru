@@ -12,8 +12,8 @@ ActiveRecord::Base.establish_connection(
   YAML.safe_load(
     ERB.new(
       File.read('config/postgresql.yml')
-    ).result, [], [], true
-  )[ENV['RACK_ENV']]
+    ).result, aliases: true
+  )[ENV.fetch('RACK_ENV', nil)]
 )
 
 NewRelic::Agent.manual_start

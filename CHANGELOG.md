@@ -1,7 +1,8 @@
 ### Changelog
 
-#### 0.2.1 (Next)
+#### 0.3.0 (Next)
 
+* [#2](https://github.com/slack-ruby/slack-ruby-bot-server-rtm/pull/2): Replace Travis-CI with GHA - [@dblock](https://github.com/dblock).
 * Your contribution here.
 
 #### 0.2.0 (2020/11/27)

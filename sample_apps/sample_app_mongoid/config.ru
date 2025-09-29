@@ -6,7 +6,7 @@ Bundler.require :default
 
 require_relative 'commands'
 
-Mongoid.load!(File.expand_path('config/mongoid.yml', __dir__), ENV['RACK_ENV'])
+Mongoid.load!(File.expand_path('config/mongoid.yml', __dir__), ENV.fetch('RACK_ENV', nil))
 
 NewRelic::Agent.manual_start
 

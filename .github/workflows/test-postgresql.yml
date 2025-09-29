@@ -1,0 +1,33 @@
+---
+name: test-postgresql
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: test
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: slack_ruby_bot_server_slack_test
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    env:
+      DATABASE_ADAPTER: activerecord
+      DATABASE_URL: postgres://test:password@localhost/slack_ruby_bot_server_slack_test
+      RACK_ENV: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+      - run: bundle exec rake spec
+      - working-directory: sample_apps/sample_app_activerecord
+        run: |
+          bundle install
+          bundle exec rake
+

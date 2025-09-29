@@ -13,7 +13,7 @@ module SlackRubyBotServer
         raise 'Missing team' unless @team
 
         attrs[:token] = @team.token
-        super(attrs)
+        super
         open!
       end
 
