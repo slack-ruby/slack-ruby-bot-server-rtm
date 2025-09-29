@@ -36,7 +36,3 @@ group :development, :test do
   gem 'vcr'
   gem 'webmock'
 end
-
-group :test do
-  gem 'slack-ruby-danger', '~> 0.2.0', require: false
-end

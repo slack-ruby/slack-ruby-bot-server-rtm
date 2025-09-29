@@ -9,7 +9,7 @@ describe SlackRubyBotServer::Config do
     let(:services) { SlackRubyBotServer::Service.instance.instance_variable_get(:@services) }
 
     before do
-      allow(SlackRubyBotServer::RealTime::Server).to receive(:new).with(team: team).and_return(server)
+      allow(SlackRubyBotServer::RealTime::Server).to receive(:new).with({ team: team }).and_return(server)
       allow(server).to receive(:stop!)
     end
 
@@ -70,7 +70,7 @@ describe SlackRubyBotServer::Config do
     end
 
     it 'creates an instance of server class' do
-      expect(server_class).to receive(:new).with(team: team).and_call_original
+      expect(server_class).to receive(:new).with({ team: team }).and_call_original
       allow_any_instance_of(server_class).to receive(:start_async)
       allow_any_instance_of(server_class).to receive(:stop!)
       SlackRubyBotServer::Service.instance.start!(team)
